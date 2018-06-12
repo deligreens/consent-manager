@@ -18,16 +18,16 @@ const Overlay = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(67, 90, 111, 0.699);
+  background: rgba(42, 31, 61, 0.7);
 `
 
 const openAnimation = keyframes`
   from {
-    transform: scale(0.8);
+    transform: translateY(-16px);
     opacity: 0;
   }
   to {
-    transform: scale(1);
+    transform: translatY(0);
     opacity: 1;
   }
 `
@@ -41,7 +41,7 @@ const Root = styled('section')`
   width: ${props => props.width};
   margin: 8px;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 2px;
   animation: ${openAnimation} ${ANIMATION_DURATION} ${ANIMATION_EASING} both;
 `
 
@@ -57,12 +57,12 @@ const Header = styled('div')`
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  border-bottom: 1px solid rgba(67, 90, 111, 0.079);
+  border-bottom: 2px solid #e5e1ec;
 `
 
 const Title = styled('h2')`
   margin: 0;
-  color: #1f4160;
+  color: #494457;
   font-size: 16px;
   font-weight: 600;
   line-height: 1.3;
@@ -95,12 +95,12 @@ const Content = styled('div')`
   }
 
   a {
-    color: #47b881;
+    color: #64afab;
     &:hover {
-      color: #64c395;
+      color: #4d8885;
     }
     &:active {
-      color: #248953;
+      color: #4d8885;
     }
   }
 `

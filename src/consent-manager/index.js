@@ -33,9 +33,9 @@ export default class ConsentManager extends PureComponent {
     shouldRequireConsent: () => true,
     implyConsentOnInteraction: true,
     cookieDomain: undefined,
-    bannerTextColor: '#fff',
-    bannerBackgroundColor: '#1f4160',
-    preferencesDialogTitle: 'Website Data Collection Preferences',
+    bannerTextColor: '#494457',
+    bannerBackgroundColor: '#FFFFFF',
+    preferencesDialogTitle: 'Préférences sur la collecte de données Deligreens',
     cancelDialogTitle: 'Are you sure you want to cancel?'
   }
 

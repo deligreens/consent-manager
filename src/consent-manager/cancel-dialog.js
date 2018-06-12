@@ -20,9 +20,9 @@ export default class CancelDialog extends PureComponent {
     const buttons = (
       <div>
         <DefaultButton type="button" onClick={onBack}>
-          Go Back
+          Non, retour
         </DefaultButton>
-        <RedButton type="submit">Yes, Cancel</RedButton>
+        <RedButton type="submit">Oui, annuler</RedButton>
       </div>
     )
 

@@ -12,7 +12,7 @@ const hideOnMobile = css`
 
 const TableScroll = styled('div')`
   overflow-x: auto;
-  margin-top: 16px;
+  margin-top: 32px;
 `
 
 const Table = styled('table')`
@@ -22,7 +22,7 @@ const Table = styled('table')`
 
 const ColumnHeading = styled('th')`
   background: #f7f8fa;
-  color: #1f4160;
+  color: #494457;
   font-weight: 600;
   text-align: left;
   border-width: 2px;
@@ -38,7 +38,7 @@ const Row = styled('tr')`
   td {
     vertical-align: top;
     padding: 8px 12px;
-    border: 1px solid rgba(67, 90, 111, 0.114);
+    border: 1px solid #e5e1ec;
     border-top: none;
   }
 `
@@ -107,9 +107,9 @@ export default class PreferenceDialog extends PureComponent {
     const buttons = (
       <div>
         <DefaultButton type="button" onClick={onCancel}>
-          Cancel
+          Annuler
         </DefaultButton>
-        <GreenButton type="submit">Save</GreenButton>
+        <GreenButton type="submit">Enregistrer</GreenButton>
       </div>
     )
 
@@ -122,16 +122,34 @@ export default class PreferenceDialog extends PureComponent {
         onSubmit={this.handleSubmit}
       >
         {content}
-
+        <br />
+        <br />
+        <p>
+          En utilisant notre site vous consentez à notre{' '}
+          <a
+            href="https://deligreens.com/pages/politique-de-confidentialite"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            politique de confidentialité.
+          </a>
+        </p>
+        <br />
+        <p>
+          Le tableau ci-dessous détaille notre utilisation des données. Vous y
+          avez la possibilité de désactiver une catégorie de données collectées
+          en sélectionnant &lquote;Non&rquote; dans la ligne correspondante puis
+          en sauvegardant vos préférences.
+        </p>
         <TableScroll>
           <Table>
             <thead>
               <Row>
-                <ColumnHeading scope="col">Allow</ColumnHeading>
-                <ColumnHeading scope="col">Category</ColumnHeading>
-                <ColumnHeading scope="col">Purpose</ColumnHeading>
+                <ColumnHeading scope="col">Autoriser</ColumnHeading>
+                <ColumnHeading scope="col">Catégories</ColumnHeading>
+                <ColumnHeading scope="col">Objectifs</ColumnHeading>
                 <ColumnHeading scope="col" className={hideOnMobile}>
-                  Tools
+                  Outils
                 </ColumnHeading>
               </Row>
             </thead>
@@ -146,10 +164,10 @@ export default class PreferenceDialog extends PureComponent {
                       value="true"
                       checked={functional === true}
                       onChange={this.handleChange}
-                      aria-label="Allow functional tracking"
+                      aria-label="Autoriser la collecte de données à but de support"
                       required
                     />{' '}
-                    Yes
+                    Oui
                   </label>
                   <label>
                     <input
@@ -158,22 +176,29 @@ export default class PreferenceDialog extends PureComponent {
                       value="false"
                       checked={functional === false}
                       onChange={this.handleChange}
-                      aria-label="Disallow functional tracking"
+                      aria-label="Interdire la collecte de données à but de support"
                       required
                     />{' '}
-                    No
+                    Non
                   </label>
                 </InputCell>
-                <RowHeading scope="row">Functional</RowHeading>
+                <RowHeading scope="row">Support</RowHeading>
                 <td>
                   <p>
-                    To monitor the performance of our site and to enhance your
-                    browsing experience.
+                    Pour être en mesure de vous apporter les meilleurs réponses
+                    possibles lorsque vous nous contactez pour du support ou
+                    SAV. Ainsi que pour prendre connaissance des éventuels bugs
+                    que vous pouvez rencontrer sur notre site et pouvoir ensuite
+                    les corriger.
                   </p>
-                  <p className={hideOnMobile}>
+                  <p>
+                    Nous vous conseillons fortement de nous autoriser à
+                    collecter ces données.
+                  </p>
+                  {/* <p className={hideOnMobile}>
                     For example, these tools enable you to communicate with us
                     via live chat.
-                  </p>
+                  </p> */}
                 </td>
                 <td className={hideOnMobile}>
                   {functionalDestinations.map(d => d.name).join(', ')}
@@ -189,10 +214,10 @@ export default class PreferenceDialog extends PureComponent {
                       value="true"
                       checked={marketingAndAnalytics === true}
                       onChange={this.handleChange}
-                      aria-label="Allow marketing and analytics tracking"
+                      aria-label="Autoriser la collecte de données à but de marketing et d'analyses"
                       required
                     />{' '}
-                    Yes
+                    Oui
                   </label>
                   <label>
                     <input
@@ -201,23 +226,23 @@ export default class PreferenceDialog extends PureComponent {
                       value="false"
                       checked={marketingAndAnalytics === false}
                       onChange={this.handleChange}
-                      aria-label="Disallow marketing and analytics tracking"
+                      aria-label="Interdire la collecte de données à but de marketing et d'analyses"
                       required
                     />{' '}
-                    No
+                    Non
                   </label>
                 </InputCell>
-                <RowHeading scope="row">Marketing and Analytics</RowHeading>
+                <RowHeading scope="row">Marketing et analyses</RowHeading>
                 <td>
                   <p>
-                    To understand user behavior in order to provide you with a
-                    more relevant browsing experience or personalize the content
-                    on our site.
+                    Pour comprendre les comportements de nos clients afin de
+                    vous proposer une expérience de navigation plus pertinente
+                    et personnalisée.
                   </p>
-                  <p className={hideOnMobile}>
+                  {/* <p className={hideOnMobile}>
                     For example, we collect information about which pages you
                     visit to help us present more relevant information.
-                  </p>
+                  </p> */}
                 </td>
                 <td className={hideOnMobile}>
                   {marketingDestinations.map(d => d.name).join(', ')}
@@ -233,10 +258,10 @@ export default class PreferenceDialog extends PureComponent {
                       value="true"
                       checked={advertising === true}
                       onChange={this.handleChange}
-                      aria-label="Allow advertising tracking"
+                      aria-label="Autoriser la collecte de données à but publicitaire"
                       required
                     />{' '}
-                    Yes
+                    Oui
                   </label>
                   <label>
                     <input
@@ -245,22 +270,22 @@ export default class PreferenceDialog extends PureComponent {
                       value="false"
                       checked={advertising === false}
                       onChange={this.handleChange}
-                      aria-label="Disallow advertising tracking"
+                      aria-label="Interdire la collecte de données à but publicitaire"
                       required
                     />{' '}
-                    No
+                    Non
                   </label>
                 </InputCell>
-                <RowHeading scope="row">Advertising</RowHeading>
+                <RowHeading scope="row">Publicité</RowHeading>
                 <td>
                   <p>
-                    To personalize and measure the effectiveness of advertising
-                    on our site and other websites.
+                    Pour personnaliser et analyser l&apos;efficacité de notre
+                    publicité sur Facebook.
                   </p>
-                  <p className={hideOnMobile}>
+                  {/* <p className={hideOnMobile}>
                     For example, we may serve you a personalized ad based on the
                     pages you visit on our site.
-                  </p>
+                  </p> */}
                 </td>
                 <td className={hideOnMobile}>
                   {advertisingDestinations.map(d => d.name).join(', ')}
@@ -269,18 +294,20 @@ export default class PreferenceDialog extends PureComponent {
 
               <Row>
                 <td>N/A</td>
-                <RowHeading scope="row">Essential</RowHeading>
+                <RowHeading scope="row">Essentiel</RowHeading>
                 <td>
                   <p>
-                    We use browser cookies that are necessary for the site to
-                    work as intended.
+                    Certains des cookies de notre site son nécessaires au
+                    fonctionnement du magasin. Vous pouvez les éviter depuis les
+                    paramètres de votre navigateur mais dans ce cas il est
+                    probable que nos services ne fonctionnent plus correctement.
                   </p>
-                  <p>
+                  {/* <p>
                     For example, we store your website data collection
                     preferences so we can honor them if you return to our site.
                     You can disable these cookies in your browser settings but
                     if you do the site may not work as intended.
-                  </p>
+                  </p> */}
                 </td>
                 <td className={hideOnMobile} />
               </Row>

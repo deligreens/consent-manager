@@ -5,6 +5,10 @@ import fontStyles from './font-styles'
 
 const Root = styled('div')`
   ${fontStyles};
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   padding: 8px;
   padding-right: 40px;
@@ -13,6 +17,7 @@ const Root = styled('div')`
   text-align: center;
   font-size: 12px;
   line-height: 1.3;
+  border-top: 4px solid #ed715a;
 `
 
 const Content = styled('div')`
@@ -38,17 +43,34 @@ const P = styled('p')`
 
 const CloseButton = styled('button')`
   position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 8px;
+  right: 16px;
+  top: 8px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 22px;
+  color: #f9fafc;
+  background-color: #ed715a;
+  border-radius: 2px;
+  padding: 4px 8px;
+  white-space: nowrap;
   border: none;
-  background: none;
-  color: inherit;
-  font: inherit;
-  font-size: 14px;
-  line-height: 1;
-  cursor: pointer;
+  transition: all 120ms cubic-bezier(0.215, 0.61, 0.355, 1); /* easeOutCubic */
+
+  &:not(.disabled):hover,
+  &:not([disabled]):hover,
+  &:not(.disabled):focus,
+  &:not([disabled]):focus {
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.2);
+    outline: none;
+    cursor: pointer;
+  }
+
+  &[disabled],
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
 `
 
 export default class Banner extends PureComponent {
@@ -80,23 +102,21 @@ export default class Banner extends PureComponent {
         textColor={textColor}
       >
         <Content>
-          <P>{content}</P>
           <P>
-            You can{' '}
+            {content}{' '}
             <button type="button" onClick={onChangePreferences}>
-              change your preferences
+              Gérer mes préférences
             </button>{' '}
-            at any time.
           </P>
         </Content>
 
         <CloseButton
           type="button"
-          title="Accept policy"
-          aria-label="Accept policy"
+          title="Accepter la politique de gestion des données de deligreens.com"
+          aria-label="Accepter la politique de gestion des données de deligreens.com"
           onClick={onAccept}
         >
-          ✕
+          ÇA ME VA !
         </CloseButton>
       </Root>
     )
