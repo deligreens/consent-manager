@@ -11,7 +11,7 @@ const Root = styled('div')`
   justify-content: center;
   position: relative;
   padding: 8px;
-  padding-right: 40px;
+  padding-right: 120px;
   background: ${props => props.backgroundColor};
   color: ${props => props.textColor};
   text-align: center;
